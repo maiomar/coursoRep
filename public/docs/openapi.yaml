@@ -1,0 +1,273 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/login:
+    post:
+      summary: Login
+      operationId: login
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  token: 3|F8rKXMlO9KzhvoavgxvYR35Jh46MBWurne3PUzTy
+                properties:
+                  token:
+                    type: string
+                    example: 3|F8rKXMlO9KzhvoavgxvYR35Jh46MBWurne3PUzTy
+        400:
+          description: 'user send a valid token'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'you are already logged in'
+                properties:
+                  message:
+                    type: string
+                    example: 'you are already logged in'
+        401:
+          description: 'email or password is wrong or user type is not user'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Email or password is wrong'
+                properties:
+                  message:
+                    type: string
+                    example: 'Email or password is wrong'
+        422:
+          description: 'validation error'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The email field is required. (and 1 more error)'
+                  errors:
+                    email:
+                      - 'The email field is required.'
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The email field is required. (and 1 more error)'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: raynor.matt@example.com
+                password:
+                  type: string
+                  description: ''
+                  example: consequatur
+              required:
+                - email
+                - password
+      security: []
+  /api/register:
+    post:
+      summary: Register
+      operationId: register
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  token: 3|F8rKXMlO9KzhvoavgxvYR35Jh46MBWurne3PUzTy
+                properties:
+                  token:
+                    type: string
+                    example: 3|F8rKXMlO9KzhvoavgxvYR35Jh46MBWurne3PUzTy
+        400:
+          description: 'user send a valid token'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'you are already logged in'
+                properties:
+                  message:
+                    type: string
+                    example: 'you are already logged in'
+        422:
+          description: 'validation error'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The name field is required. (and 4 more errors)'
+                  errors:
+                    name:
+                      - 'The name field is required.'
+                    last_name:
+                      - 'The last name field is required.'
+                    email:
+                      - 'The email field is required.'
+                    password:
+                      - 'The password field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The name field is required. (and 4 more errors)'
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        example:
+                          - 'The name field is required.'
+                        items:
+                          type: string
+                      last_name:
+                        type: array
+                        example:
+                          - 'The last name field is required.'
+                        items:
+                          type: string
+                      email:
+                        type: array
+                        example:
+                          - 'The email field is required.'
+                        items:
+                          type: string
+                      password:
+                        type: array
+                        example:
+                          - 'The password field is required.'
+                        items:
+                          type: string
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: dolore
+                last_name:
+                  type: string
+                  description: ''
+                  example: numquam
+                momile_phone:
+                  type: string
+                  description: ''
+                  example: velit
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: waufderhar@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: autem
+              required:
+                - name
+                - last_name
+                - momile_phone
+                - email
+                - password
+      security: []
+  /api/logout:
+    post:
+      summary: Logout
+      operationId: logout
+      description: ''
+      parameters: []
+      responses:
+        204:
+          description: ''
+        401:
+          description: 'user not logged in'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Authentication
+      security: []
+  /api/user:
+    get:
+      summary: ''
+      operationId: getApiUser
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Authentication
+    description: "\nAPIs for authentication"
+  -
+    name: Endpoints
+    description: ''

@@ -1,0 +1,259 @@
+name: Authentication
+description: |-
+
+  APIs for authentication
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/login
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: Login
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: raynor.matt@example.com
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: raynor.matt@example.com
+      password: consequatur
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "token":"3|F8rKXMlO9KzhvoavgxvYR35Jh46MBWurne3PUzTy"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+          "message": "you are already logged in"
+           }
+        headers: []
+        description: 'user send a valid token'
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+          "message":"Email or password is wrong"
+          }
+        headers: []
+        description: 'email or password is wrong or user type is not user'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+
+          "message": "The email field is required. (and 1 more error)",
+          "errors": {
+          "email": [
+          "The email field is required."
+          ],
+          "password": [
+          "The password field is required."
+          ]
+          }
+          }
+        headers: []
+        description: 'validation error'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/register
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: Register
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: dolore
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: numquam
+        type: string
+        custom: []
+      momile_phone:
+        name: momile_phone
+        description: ''
+        required: true
+        example: velit
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: waufderhar@example.net
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: autem
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: dolore
+      last_name: numquam
+      momile_phone: velit
+      email: waufderhar@example.net
+      password: autem
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+          "token":"3|F8rKXMlO9KzhvoavgxvYR35Jh46MBWurne3PUzTy"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 400
+        content: |-
+          {
+          "message": "you are already logged in"
+           }
+        headers: []
+        description: 'user send a valid token'
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+
+          "message": "The name field is required. (and 4 more errors)",
+          "errors": {
+          "name": [
+          "The name field is required."
+          ],
+          "last_name": [
+          "The last name field is required."
+          ],
+          "email": [
+          "The email field is required."
+          ],
+          "password": [
+          "The password field is required."
+          ]
+          }
+          }
+        headers: []
+        description: 'validation error'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/logout
+    metadata:
+      groupName: Authentication
+      groupDescription: |-
+
+        APIs for authentication
+      subgroup: ''
+      subgroupDescription: ''
+      title: Logout
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 204
+        content: '{}'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+          "message":"Unauthenticated."
+          }
+        headers: []
+        description: 'user not logged in'
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
