@@ -16,8 +16,8 @@ return new class extends Migration
     {
         Schema::create('suggestions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('suggested_course');//الدورة المقترحة
             $table->date('suggested_date')->default(DB::raw('CURRENT_TIMESTAMP'));//تاريخ الاقتراح
             $table->timestamps();

@@ -24,10 +24,13 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             CourseTeachersSeeder::class,
             CourseSyllabusSeeder::class,
-            StudentSeeder::class,
             RejistrationSeeder::class,
             SuggestionsSeeder::class,
-            PaymentSeeder::class,
+           // PaymentSeeder::class,
+            DaySeeder::class,
+            CourseDaySeeder::class
+
+
 
 
       ]);

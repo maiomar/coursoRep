@@ -24,14 +24,19 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>['required'],
+            'first_name'=>['required'],
             'last_name'=>['required'],
-            'momile_phone'=>['required'],
             'email'=>['required','email','unique:users,email'],
             'password'=>['required'] ,
-
-
-
+            'birth_date'=>['required'],
+            'mobile'=>['required'],
+            'gender'=>['required'],
+            'Address'=>['required'],
+            'nationality'=>['required'],
+            'social_situation'=>['required'],
+            'educcational_attainment'=>['required'],
+            'photo_profile'=>['required'],
+            
 
 
         ];

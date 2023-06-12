@@ -10,10 +10,6 @@ class course extends Model
 {
     use HasFactory;
 
-
-
-
-
     protected $fillable = [
         'branch_id',
         'course_name',
@@ -50,6 +46,12 @@ class course extends Model
     public function instutes()
     {
        return $this->belongsTo(Institute::class);
+    }
+
+
+      public function CourseDay()
+    {
+        return $this->hasMany(CourseDay::class);
     }
 
 

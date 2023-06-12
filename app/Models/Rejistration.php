@@ -10,7 +10,7 @@ class Rejistration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
+        'user_id',
         'course_id',
         'accepted',
     ];
@@ -20,9 +20,9 @@ class Rejistration extends Model
         return $this->belongsTo(course::class);
     }
 
-    public function student()
+    public function User()
     {
-        return $this->belongsTo(Student::class);
+        return $this->belongsTo(User::class);
     }
 
     public function payment()

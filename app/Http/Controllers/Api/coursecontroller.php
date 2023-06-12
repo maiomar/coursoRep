@@ -11,6 +11,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Api\SuggestionsRequest;
+use App\Models\Suggestions;
 //use Illuminate\Database\Eloquent\Builder;
 
 class coursecontroller extends Controller
@@ -26,14 +28,14 @@ class coursecontroller extends Controller
         //شغل ايات
         // معلومات الدورة
         $cours=course::join('institutes','institutes.id','=','courses.institute_id')
-        // ->join('courses','courses.id','=','course_syllabi.cours_id')
-        // ->join('courses','courses.id','=','course_teachers.cours_id')
-        // ->join('teachers','teachers.id','=','course_teachers.teacher_id')
+         ->join('courses','courses.id','=','course_syllabi.cours_id')
+         ->join('courses','courses.id','=','course_teachers.cours_id')
+         ->join('teachers','teachers.id','=','course_teachers.teacher_id')
 
          ->select('courses.image_path','institutes.institute_name','courses.course_name'
          ,'courses.cost1','courses.cost2','courses.rejistration_startdate'
-         ,'courses.rejistration_enddate','courses.course_startdate','courses.number_hourse','institutes.location_institute')
-        // ,'course_syllabi.course_subject','teachers.teacher_name')
+         ,'courses.rejistration_enddate','courses.course_startdate','courses.number_hourse','institutes.location_institute'
+         ,'course_syllabi.course_subject','teachers.teacher_name')
          ->get();
          return $cours;
 
@@ -216,20 +218,30 @@ $searchRes ;
     public function user_home( $id)
     {
         $rs = Auth::user();
-        return $rs['name'];
+        return $rs['first_name'];
     }
 
     //اقتراح دورة
-    public function Suggestions(Request $request)
+    public function Suggestions(SuggestionsRequest $request)
     {
 
         $rs = Auth::user();
         $user=Suggestions::create([
 
+            'user_id'=>$user['id'],
             'suggested_course'=>$request->suggested_course,
 
         ]);
+            return response([
+                'message'=>'Enrolled successfully'
+            ],200);
+
+
     }
+
+
+
+
 
 
 

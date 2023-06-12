@@ -74,6 +74,7 @@ class Usercontroller extends Controller
         $user = Auth::user();
 
 
+
         $validator = $request->validate([
 
             'name'=>'required|min:2|max:100',
@@ -86,20 +87,8 @@ class Usercontroller extends Controller
 
   $image_name = null;
         if($request->hasFile('photo_profile')){
-
-            $user->update([
-                'name'=>$validator['name'],
-                'last_name'=>$validator['last_name'],
-                'momile_phone'=>$validator['momile_phone'],
-                'email'=>$validator['email'],
-                'password'=>Hash::make($validator['password']),
-                'photo_profile'=>$request->file('photo_profile')->store('public')
-            ]);
-        }else{
-        $image_name=$user->photo_profile;
-
+            $image_name = $request->file('photo_profile')->store('public');
         }
-
 
         $user->update([
             'name'=>$validator['name'],
@@ -107,7 +96,7 @@ class Usercontroller extends Controller
             'momile_phone'=>$validator['momile_phone'],
             'email'=>$validator['email'],
             'password'=>Hash::make($validator['password']),
-            'photo_profile'=>$validator->$image_name
+            'photo_profile'=>$validator['photo_profile'],
         ]);
 
 
@@ -137,10 +126,10 @@ class Usercontroller extends Controller
     {
 
         $user = Auth::user();
-        return $user;
+
 
        $user=Rejistration::create([
-        'student_id'=>$user['id'],
+        'user_id'=>$user['id'],
         'course_id'=>$course_id,
        ]);
        return response([

@@ -17,36 +17,33 @@ class RejistrationSeeder extends Seeder
     public function run()
     {
         $rijestration=Rejistration::create([
-            'student_id'=>1,
+            'user_id'=>1,
             'course_id'=>1,
-            'accepted'=>false
+
 
 
         ]);
 
 
         $rijestration=Rejistration::create([
-            'student_id'=>2,
+            'user_id'=>2,
             'course_id'=>2,
-            'accepted'=>true
+
         ]);
         $rijestration=Rejistration::create([
-            'student_id'=>2,
+            'user_id'=>2,
             'course_id'=>3,
-            'accepted'=>true
         ]);
 
         $rijestration=Rejistration::create([
-            'student_id'=>2,
+            'user_id'=>2,
             'course_id'=>4,
-            'accepted'=>true
         ]);
 
 
         $rijestration=Rejistration::create([
-            'student_id'=>3,
+            'user_id'=>3,
             'course_id'=>3,
-            'accepted'=>true
         ]);
 
     }

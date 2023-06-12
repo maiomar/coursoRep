@@ -17,18 +17,18 @@ class SuggestionsSeeder extends Seeder
     public function run()
     {
         $suggeste=Suggestions::create([
-              'student_id'=>1,
+              'user_id'=>1,
               'suggested_course'=>'رياضيات',
             ]);
 
         $suggeste=Suggestions::create([
-                'student_id'=>2,
+                'user_id'=>2,
                 'suggested_course'=>'علوم',
             ]);
 
 
         $suggeste=Suggestions::create([
-                'student_id'=>3,
+                'user_id'=>3,
                 'suggested_course'=>'رسم',
             ]);
 

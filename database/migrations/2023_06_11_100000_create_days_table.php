@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('branches', function (Blueprint $table) {
+        Schema::create('days', function (Blueprint $table) {
             $table->id();
-            $table->string('branch_name');// اسم الفرع
-            $table->string('branch_location');// موقع الفرع
-            $table->unsignedBigInteger('institute_id');
-            $table->foreign('institute_id')->references('id')->on('institutes')->onDelete('cascade');
+            $table->string('day_name');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches');
+        Schema::dropIfExists('days');
     }
 };

@@ -17,7 +17,7 @@ class PaymentSeeder extends Seeder
     public function run()
     {
         $payment=Payment::create([
-        'student_id'=>1,
+        'user_id'=>1,
         'rejistration_id'=>1,
         'price'=>10000,
         'date_price'=>Carbon::parse('2023-3-1'),
@@ -25,7 +25,7 @@ class PaymentSeeder extends Seeder
         ]);
 
         $payment=Payment::create([
-            'student_id'=>2,
+            'user_id'=>2,
             'rejistration_id'=>2,
             'price'=>110000,
             'date_price'=>Carbon::parse('2023-3-8'),
@@ -33,7 +33,7 @@ class PaymentSeeder extends Seeder
             ]);
 
         $payment=Payment::create([
-                'student_id'=>3,
+                'user_id'=>3,
                 'rejistration_id'=>3,
                 'price'=>160000,
                 'date_price'=>Carbon::parse('2023-3-9'),

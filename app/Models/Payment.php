@@ -10,11 +10,11 @@ class Payment extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
+        'user_id',
         'rejistration_id',
         'amount',
     ];
-    
+
     public function registration()
     {
         return $this->belongsTo(Rejistration::class);

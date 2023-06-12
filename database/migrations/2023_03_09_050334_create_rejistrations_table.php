@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('rejistrations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('course_id');
             $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
             $table->date('date_rejistration')->default(DB::raw('CURRENT_TIMESTAMP'));//تاريخ التسجيل على الدورة
-            $table->boolean('accepted');//قبول بالدورة
+            $table->boolean('accepted')->default(0);//قبول بالدورة
             $table->timestamps();
         });
     }

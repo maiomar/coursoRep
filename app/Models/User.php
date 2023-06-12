@@ -18,16 +18,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
         'email',
         'password',
         'last_name',
-        'momile_phone',
+        'mobile',
         'photo_profile',
         'role_id',
+        'birth_date',
+        'gender',
+        'Address',
+        'nationality',
+        'social_situation',
+        'educcational_attainment',
         'id'
-
-
     ];
 
     /**
@@ -53,10 +57,15 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Roles::class);
     }
-
-    public function student()
+    public function Registeration()
     {
-        return $this->hasOn(Student::class);
+        return $this->hasMany(Rejistration::class);
     }
+
+    public function suugestions()
+    {
+        return $this->hasMany(Suggestions::class);
+    }
+
 
 }

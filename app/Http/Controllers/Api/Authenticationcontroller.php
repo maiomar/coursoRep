@@ -102,20 +102,28 @@ class Authenticationcontroller extends Controller
     {
        $user=User::create([
 
-        'name'=>$request->name,
+        'first_name'=>$request->first_name,
         'last_name'=>$request->last_name,
-        'momile_phone'=>$request->momile_phone,
         'email'=>$request->email,
         'password'=>Hash::make($request->password),
-        'role_id'=>2
+        'birth_date' =>$request->birth_date,
+        'mobile'=>$request->mobile,
+        'gender'=>$request->gender,
+        'Address'=>$request->Address,
+        'nationality'=>$request->nationality,
+        'social_situation'=>$request->social_situation,
+        'educcational_attainment'=>$request->educcational_attainment,
+        'photo_profile'=>$request->photo_profile,
        ]);
 
-       Auth::attempt(['email'=>$request->email,'password'=>$request->password]);
+       
+       Auth::attempt(['email'=>$request->email,'password'=>$request->password,'role_id'=>2]);
        $token=auth()->user()->createToken("token")->plainTextToken;
        return response([
         'token'=>$token,
        ]);
     }
+
 
 
 
